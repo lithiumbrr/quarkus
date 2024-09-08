@@ -19,7 +19,7 @@ public class TaskBean {
     EventRepository eventRepository;
 
     @Transactional
-    @Scheduled(every = "360s", identity = "task-job")
+    @Scheduled(cron = "0 * * * * ?", identity = "task-job")
     void activeStatus() {
         List<Event> events = eventRepository.listAll();
         if (!events.isEmpty()) {
