@@ -78,7 +78,7 @@ public class EventResource {
         Event newEvent = new Event();
         event.setName(newEvent.getName());
         event.setInitialDate(event.getInitialDate());
-        event.setFinaldate(event.getFinaldate());
+        event.setFinalDate(event.getFinalDate());
         return newEvent;
     }
 }

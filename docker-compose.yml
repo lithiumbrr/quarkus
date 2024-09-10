@@ -37,7 +37,7 @@ services:
       - tasks-network
 
   frontend:
-    build: view
+    build: src/main/resources/META-INF/view
     ports:
       - "3000:80"
     networks:

@@ -22,7 +22,7 @@ public class Event {
 
     public Date initialDate;
 
-    public Date Finaldate;
+    public Date finalDate;
 
     public boolean active;
 
@@ -46,12 +46,12 @@ public class Event {
         this.initialDate = initialDate;
     }
 
-    public Date getFinaldate() {
-        return Finaldate;
+    public Date getFinalDate() {
+        return finalDate;
     }
 
-    public void setFinaldate(Date finaldate) {
-        Finaldate = finaldate;
+    public void setFinalDate(Date finalDate) {
+        this.finalDate = finalDate;
     }
 
     public boolean isActive() {

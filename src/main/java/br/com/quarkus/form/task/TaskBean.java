@@ -19,7 +19,7 @@ public class TaskBean {
     EventRepository eventRepository;
 
     @Transactional
-    @Scheduled(cron = "0 * * * * ?", identity = "task-job")
+    @Scheduled(cron = "0 0 * * * ?", identity = "task-job")
     void activeStatus() {
         List<Event> events = eventRepository.listAll();
         if (!events.isEmpty()) {
@@ -28,7 +28,7 @@ public class TaskBean {
                     elem.setActive(true);
                     eventRepository.persist(elem);
                 }
-                if (elem.isActive() && !elem.getFinaldate().equals(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()))) {
+                if (elem.isActive() && !elem.getFinalDate().equals(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()))) {
                     elem.setActive(false);
                     eventRepository.persist(elem);
                 }
