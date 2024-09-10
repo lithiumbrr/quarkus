@@ -24,11 +24,11 @@ public class TaskBean {
         List<Event> events = eventRepository.listAll();
         if (!events.isEmpty()) {
             events.forEach(elem -> {
-                if (!elem.isActive() && elem.getInitialDate().equals(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()))) {
+                if (!elem.isActive() && elem.getInitialDate().after(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant())) && elem.getFinalDate().before(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()))) {
                     elem.setActive(true);
                     eventRepository.persist(elem);
                 }
-                if (elem.isActive() && !elem.getFinalDate().equals(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()))) {
+                if (elem.isActive() && elem.getFinalDate().after(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()))) {
                     elem.setActive(false);
                     eventRepository.persist(elem);
                 }

@@ -51,12 +51,12 @@ public class EventResource {
     @PUT
     @Path("/{id}")
     @Transactional
-    public Response updateInstitution(@PathParam("id") Long eventId, Event updatedEvent) {
+    public Response updateInstitution(@PathParam("id") Long eventId) {
         Event event = repository.findById(eventId);
         if (event != null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        updatedEvent = buildEvent(event);
+        Event updatedEvent = buildEvent(event);
 
         repository.persist(updatedEvent);
         return Response.ok(updatedEvent).build();
